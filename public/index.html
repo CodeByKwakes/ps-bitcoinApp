@@ -64,6 +64,9 @@
     socket.on('connect', function(){
       socket.on('ticker', function(data){
         console.log(data);
+
+        // // Update the market name
+        $('#market').text(data.ticker.market);
       })
     })
   </script>
