@@ -1,12 +1,28 @@
-import * as express from 'express';
+import * as http from 'http';
+import App from "./app";
 
-const app = express();
 const port = 3000;
+const server = http.createServer(App);
+App.set('port', port)
+server.listen(port);
+server.on('listening', onListening)
 
-app.get('/', (req, res) => {
-    res.send('Hello World! New World');
-});
+function onListening(): void {
+  console.log(`Listening to port ${port}`)
+}
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
-});
+
+
+
+// can also use below
+
+// server.listen(port);
+// server.on('listening', () => {
+//   console.log(`Listening to port ${port}`)
+// })
+
+// or 
+
+// server.listen(port, () => {
+//     console.log(`Listening to port ${port}`)
+// });
