@@ -65,8 +65,24 @@
       socket.on('ticker', function(data){
         console.log(data);
 
-        // // Update the market name
+        // Update the market name
         $('#market').text(data.ticker.market);
+
+        // Update the High selling price
+        $('#high-count').text(data.ticker.high);
+
+        // Update the Low selling price
+        $('#low-count').text(data.ticker.low);
+
+       // Update the Buy price
+        $('#buy').text(data.ticker.buy);
+
+        // Update the Sell price
+        $('#sell').text(data.ticker.sell);
+
+        // Update the Volume
+        $('#volume').text(data.ticker.vol);
+
       })
     })
   </script>
