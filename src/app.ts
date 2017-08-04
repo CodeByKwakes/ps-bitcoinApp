@@ -1,19 +1,22 @@
 import * as express from 'express';
+import * as path from 'path';
 
 // Creates and configures an ExpressJS web server.
 class App {
   // ref to Express instance
-  public express: express.Application;
+  public app: express.Application;
 
   //Run configuration methods on the Express instance.
   constructor() {
-    this.express = express();
+    this.app = express();
     this.middleware();
-    this.routes();
+    // this.routes();
   }
 
   // Configure Express middleware.
-  private middleware(): void { }
+  private middleware(): void {
+this.app.use(express.static(path.join(__dirname, '../public')))
+   }
 
   // Configure API endpoints.
   private routes(): void {
@@ -27,8 +30,8 @@ class App {
         message: 'Hello World!'
       });
     });
-    this.express.use('/', router);
+    this.app.use('/', router);
   }
 }
 
-export default new App().express;
+export default new App().app;
