@@ -15,8 +15,8 @@ class App {
 
   // Configure Express middleware.
   private middleware(): void {
-this.app.use(express.static(path.join(__dirname, '../public')))
-   }
+    this.app.use(express.static(path.join(__dirname, '../public')))
+  }
 
   // Configure API endpoints.
   private routes(): void {
@@ -32,6 +32,7 @@ this.app.use(express.static(path.join(__dirname, '../public')))
     });
     this.app.use('/', router);
   }
+
 }
 
 export default new App().app;
